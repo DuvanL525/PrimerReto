@@ -3,12 +3,9 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
     try {
-        const { connection } = await mongoose.connect(process.env.MONGO_URI, {
-            dbName: 'mern_calendar'
-            }
-        );
-        const url = process.env.MONGODB_URL;
-        //const connection = await mongoose.connect(url);
+        const url =process.env.MONGODB_URL;
+        const connection = await mongoose.connect(url);
+
         console.log('MongoDB conectado');  
 
     } catch (error) {

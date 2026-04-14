@@ -17,12 +17,14 @@
     "bcrypt": "^6.0.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "express-validator": "^7.3.2",
     "mongodb": "^7.1.0",
-    "mongoose": "^9.3.2"
+    "mongoose": "^9.3.2",
+    "slug": "^11.0.1"
   },
   "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",
+    "@types/slug": "^5.0.9",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
