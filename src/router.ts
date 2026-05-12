@@ -1,25 +1,34 @@
 import { Router } from "express";
-<<<<<<< HEAD
-import { createAccount } from "./handlers/index.js";
-=======
->>>>>>> 23a3bc36824558161c3e7c0c8a9323698fdefcb5
+import { body } from "express-validator";
+import { createAccount, login } from "./handlers/index.js";
+import { handleInputErrors } from "./middleware/validation.js";
 
 const router = Router();
 
-//Routing:
-<<<<<<< HEAD
-router.post('/auth/register', createAccount);
-/*
-router.post('/auth/register', async(req, res) => {
-    //res.send('Desde register, lo envia res.send!...');
-    console.log('Desde register');
-    console.log(req.body);
+router.post('/auth/register',
+    body('handle')
+        .notEmpty()
+        .withMessage('El handle no debe estar vacio!...'),
+    body('name')
+        .notEmpty()
+        .withMessage('El nombre no debe estar vacio!...'),
+    body('email')
+        .isEmail()
+        .withMessage('email noes valido!...'),
+    body('password')
+        .isLength({min: 8})
+        .withMessage('El password debe ser minimo de 8 caracteres!...'),
+    handleInputErrors,
+    createAccount);
 
-    const user = new User(req.body);
-    await user.save();
-
-    res.send('Registro creado correctamente...');
-})*/
->>>>>>>>> Temporary merge branch 2
+router.post('/auth/login',
+    body('email')
+        .isEmail()
+        .withMessage('email no es valido!...'),
+    body('password')
+        .notEmpty()
+        .withMessage('El password no debe ser vacio!...'),
+    handleInputErrors,
+    login);
 
 export default router;  

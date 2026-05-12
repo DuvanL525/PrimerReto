@@ -39,12 +39,13 @@ export const createAccount = async(req : Request, res : Response) => {
 }
     export const login = async (req: Request, res: Response) => {
         //Gestionado errores:
+
+        const { email, password} = req.body;
+
         let errors = validationResult(req);
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()});
         }
-
-        const { email, password} = req.body;
 
         // Check User Exist
         const user = await User.findOne({email});
